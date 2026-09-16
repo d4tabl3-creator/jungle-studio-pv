@@ -86,7 +86,10 @@ const amenities = [
   { icon: AirVent, title: "Aire acondicionado", text: "Además de ventilador de techo" },
   { icon: Refrigerator, title: "Cocina equipada", text: "Parrilla, refrigerador y servicio" },
   { icon: Trees, title: "Terraza privada", text: "Tu rincón verde al aire libre" },
+  { icon: PawPrint, title: "Mascotas", text: "Acepto 1 mascota (sujeto a criterio y depósito adicional)" },
 ];
+
+const whatsappLink = "https://wa.me/523222128950?text=Hola,%20estoy%20interesado%20en%20el%20estudio%20en%20El%20Pitillal";
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
