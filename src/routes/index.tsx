@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   AirVent,
-  ArrowDown,
   BedDouble,
   Check,
   ChevronLeft,
@@ -13,7 +12,6 @@ import {
   MessageCircle,
   PawPrint,
   Refrigerator,
-  Send,
   ShieldCheck,
   Sparkles,
   Trees,
@@ -94,7 +92,6 @@ const whatsappLink = "https://wa.me/523222128950?text=Hola,%20estoy%20interesado
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activePhoto, setActivePhoto] = useState<number | null>(null);
-  const [sent, setSent] = useState(false);
 
   useEffect(() => {
     if (activePhoto === null) return;
@@ -252,7 +249,7 @@ function Index() {
           <div><p className="eyebrow">Ven a conocerlo</p><h2 className="mt-4 font-display text-4xl sm:text-5xl">¿Te imaginas viviendo aquí?</h2><p className="mt-6 max-w-md text-base leading-7 text-muted-foreground">Interesados enviar mensaje para agendar cita. No se comparte la dirección exacta por seguridad.</p></div>
           <div className="grid gap-6">
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-7 py-3 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"><MessageCircle className="size-4" /> Contactar por WhatsApp</a>
-            <p className="text-sm text-muted-foreground">Interesados enviar mensaje para agendar cita. No se comparte la dirección exacta por seguridad.</p>
+            <p className="text-sm text-muted-foreground">Te responderé por WhatsApp para agendar una visita.</p>
           </div>
         </div>
       </section>
