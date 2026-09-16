@@ -107,6 +107,8 @@ function Index() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const selectedPhoto = activePhoto === null ? undefined : photos[activePhoto];
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <header className="absolute inset-x-0 top-0 z-40 border-b border-hero-line bg-hero-wash text-hero-foreground backdrop-blur-md">
@@ -129,7 +131,7 @@ function Index() {
         </div>
         {menuOpen && (
           <nav className="grid gap-1 border-t border-hero-line bg-hero-mobile px-5 py-4 md:hidden" aria-label="Navegación móvil">
-            {[["espacio", "El espacio"], ["galeria", "Galería"], ["detalles", "Detalles"], ["contacto", "Agendar visita"]].map(([id, label]) => (
+            {([['espacio', 'El espacio'], ['galeria', 'Galería'], ['detalles', 'Detalles'], ['contacto', 'Agendar visita']] as const).map(([id, label]) => (
               <button key={id} type="button" onClick={() => goTo(id)} className="rounded-md px-4 py-3 text-left font-medium hover:bg-hero-wash">{label}</button>
             ))}
           </nav>
@@ -256,9 +258,9 @@ function Index() {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12"><span className="font-display text-lg text-foreground">Jungle Studio El Pitillal</span><span>Un rincón verde en Puerto Vallarta.</span></div>
       </footer>
 
-      {activePhoto !== null && (
+      {activePhoto !== null && selectedPhoto && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-lightbox p-3 sm:p-8" role="dialog" aria-modal="true" aria-label="Visor de fotografías" onClick={() => setActivePhoto(null)}>
-          <img src={photos[activePhoto].src} alt={photos[activePhoto].alt} className="max-h-[88vh] max-w-full rounded-sm object-contain shadow-photo" onClick={(event) => event.stopPropagation()} />
+          <img src={selectedPhoto.src} alt={selectedPhoto.alt} className="max-h-[88vh] max-w-full rounded-sm object-contain shadow-photo" onClick={(event) => event.stopPropagation()} />
           <button type="button" onClick={() => setActivePhoto(null)} className="absolute right-4 top-4 grid size-11 place-items-center rounded-full bg-gallery-control text-gallery-control-foreground" aria-label="Cerrar fotografía"><X className="size-5" /></button>
           <button type="button" onClick={(event) => { event.stopPropagation(); setActivePhoto((activePhoto - 1 + photos.length) % photos.length); }} className="absolute left-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-gallery-control text-gallery-control-foreground sm:left-7" aria-label="Fotografía anterior"><ChevronLeft className="size-6" /></button>
           <button type="button" onClick={(event) => { event.stopPropagation(); setActivePhoto((activePhoto + 1) % photos.length); }} className="absolute right-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-gallery-control text-gallery-control-foreground sm:right-7" aria-label="Fotografía siguiente"><ChevronRight className="size-6" /></button>
