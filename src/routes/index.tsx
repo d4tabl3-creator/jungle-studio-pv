@@ -10,6 +10,8 @@ import {
   Flower2,
   MapPin,
   Menu,
+  MessageCircle,
+  PawPrint,
   Refrigerator,
   Send,
   ShieldCheck,
