@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   AirVent,
-  ArrowDown,
   BedDouble,
   Check,
   ChevronLeft,
@@ -10,8 +9,9 @@ import {
   Flower2,
   MapPin,
   Menu,
+  MessageCircle,
+  PawPrint,
   Refrigerator,
-  Send,
   ShieldCheck,
   Sparkles,
   Trees,
@@ -84,12 +84,14 @@ const amenities = [
   { icon: AirVent, title: "Aire acondicionado", text: "Además de ventilador de techo" },
   { icon: Refrigerator, title: "Cocina equipada", text: "Parrilla, refrigerador y servicio" },
   { icon: Trees, title: "Terraza privada", text: "Tu rincón verde al aire libre" },
+  { icon: PawPrint, title: "Mascotas", text: "Acepto 1 mascota (sujeto a criterio y depósito adicional)" },
 ];
+
+const whatsappLink = "https://wa.me/523222128950?text=Hola,%20estoy%20interesado%20en%20el%20estudio%20en%20El%20Pitillal";
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activePhoto, setActivePhoto] = useState<number | null>(null);
-  const [sent, setSent] = useState(false);
 
   useEffect(() => {
     if (activePhoto === null) return;
@@ -123,7 +125,7 @@ function Index() {
             <a href="#espacio" className="transition-opacity hover:opacity-65">El espacio</a>
             <a href="#galeria" className="transition-opacity hover:opacity-65">Galería</a>
             <a href="#detalles" className="transition-opacity hover:opacity-65">Detalles</a>
-            <a href="#contacto" className="rounded-full bg-hero-foreground px-5 py-2.5 text-hero-contrast transition-transform hover:-translate-y-0.5">Agendar visita</a>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="rounded-full bg-hero-foreground px-5 py-2.5 text-hero-contrast transition-transform hover:-translate-y-0.5">Agendar visita</a>
           </nav>
           <button type="button" className="grid size-10 place-items-center rounded-full border border-hero-line md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú" aria-expanded={menuOpen}>
             {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -131,9 +133,10 @@ function Index() {
         </div>
         {menuOpen && (
           <nav className="grid gap-1 border-t border-hero-line bg-hero-mobile px-5 py-4 md:hidden" aria-label="Navegación móvil">
-            {([['espacio', 'El espacio'], ['galeria', 'Galería'], ['detalles', 'Detalles'], ['contacto', 'Agendar visita']] as const).map(([id, label]) => (
+            {([['espacio', 'El espacio'], ['galeria', 'Galería'], ['detalles', 'Detalles']] as const).map(([id, label]) => (
               <button key={id} type="button" onClick={() => goTo(id)} className="rounded-md px-4 py-3 text-left font-medium hover:bg-hero-wash">{label}</button>
             ))}
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="rounded-md px-4 py-3 text-left font-medium hover:bg-hero-wash">Agendar visita</a>
           </nav>
         )}
       </header>
@@ -150,8 +153,8 @@ function Index() {
           </h1>
           <div className="mt-7 flex max-w-3xl flex-col items-start gap-7 border-t border-hero-line pt-6 sm:flex-row sm:items-end sm:justify-between">
             <p className="max-w-xl text-base leading-relaxed text-hero-muted sm:text-lg">Un espacio tranquilo, con mucha luz natural y áreas verdes, a minutos del centro de Puerto Vallarta.</p>
-            <a href="#contacto" className="inline-flex shrink-0 items-center gap-3 rounded-full bg-accent px-6 py-3.5 text-sm font-bold text-accent-foreground shadow-soft transition-transform hover:-translate-y-0.5">
-              Agendar visita <ArrowDown className="size-4" />
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-3 rounded-full bg-accent px-6 py-3.5 text-sm font-bold text-accent-foreground shadow-soft transition-transform hover:-translate-y-0.5">
+              Agendar visita <MessageCircle className="size-4" />
             </a>
           </div>
         </div>
@@ -237,20 +240,17 @@ function Index() {
           <MapPin className="size-7 text-hero-accent" />
           <p className="mt-6 text-xs font-bold uppercase tracking-[0.22em] text-hero-muted">Ubicación</p>
           <h2 className="mt-4 max-w-2xl font-display text-5xl sm:text-6xl">El Pitillal, Puerto Vallarta</h2>
-          <p className="mt-6 max-w-xl text-base leading-7 text-hero-muted">Vive cerca de tianguis, supermercados, transporte público y la mejor comida local, en un barrio auténtico y bien conectado.</p>
+          <p className="mt-6 max-w-xl text-base leading-7 text-hero-muted">Vive en un barrio auténtico, seguro y bien conectado. A solo 3 calles encontrarás el mercado local de alimentos frescos y el mercado de mariscos. También hay centros comerciales, hospitales y escuelas cercanas. A 4 cuadras tienes acceso al río, ideal para caminar o relajarte, y justo al lado del edificio hay un gimnasio. Todo lo que necesitas está a la mano.</p>
         </div>
       </section>
 
       <section id="contacto" className="py-20 sm:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-12">
           <div><p className="eyebrow">Ven a conocerlo</p><h2 className="mt-4 font-display text-4xl sm:text-5xl">¿Te imaginas viviendo aquí?</h2><p className="mt-6 max-w-md text-base leading-7 text-muted-foreground">Interesados enviar mensaje para agendar cita. No se comparte la dirección exacta por seguridad.</p></div>
-          <form className="grid gap-6" onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
-            <label className="grid gap-2 text-sm font-semibold">Nombre<input required name="nombre" autoComplete="name" className="form-field" placeholder="Tu nombre" /></label>
-            <label className="grid gap-2 text-sm font-semibold">Correo electrónico<input required name="correo" type="email" autoComplete="email" className="form-field" placeholder="tu@correo.com" /></label>
-            <label className="grid gap-2 text-sm font-semibold">Mensaje<textarea required name="mensaje" rows={4} className="form-field resize-none" defaultValue="Hola, me interesa conocer Jungle Studio El Pitillal. ¿Podemos agendar una visita?" /></label>
-            <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-7 py-3 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"><Send className="size-4" /> Enviar solicitud</button>
-            {sent && <p role="status" className="rounded-md bg-muted p-4 text-sm text-primary">Gracias por tu interés. Tu mensaje está listo; el envío por correo se habilitará al conectar un medio de contacto.</p>}
-          </form>
+          <div className="grid gap-6">
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary px-7 py-3 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5"><MessageCircle className="size-4" /> Contactar por WhatsApp</a>
+            <p className="text-sm text-muted-foreground">Te responderé por WhatsApp para agendar una visita.</p>
+          </div>
         </div>
       </section>
 
