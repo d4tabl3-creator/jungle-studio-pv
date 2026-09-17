@@ -174,9 +174,9 @@ function Index() {
             </div>
             <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2">
               {[
-                [BedDouble, "Descanso", "Cama, clóset, aire acondicionado y ventilador de techo."],
-                [Refrigerator, "Cocina", "Parrilla, refrigerador y servicio completo para cuatro personas."],
-                [Droplets, "Baño dividido", "WC y lavamanos separados de la regadera con calentador instantáneo."],
+                [BedDouble, "Descanso", "Cama matrimonial, clóset, aire acondicionado y ventilador de techo."],
+                [Refrigerator, "Cocina", "Parrilla, frigobar y servicio completo para cuatro personas."],
+                [Droplets, "Baño dividido", "WC y lavamanos separados de la regadera con calentador eléctrico instantáneo."],
                 [Trees, "Vida exterior", "Terraza techada con áreas verdes y espacios para leer o descansar."],
               ].map(([Icon, title, text]) => {
                 const FeatureIcon = Icon as typeof BedDouble;
