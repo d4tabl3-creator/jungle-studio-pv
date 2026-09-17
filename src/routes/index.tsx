@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   AirVent,
   BedDouble,
+  Camera,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -23,13 +24,11 @@ import { useEffect, useState } from "react";
 import cocinaAngulo from "@/assets/studio/cocina-angulo.webp.asset.json";
 import cocinaPasillo from "@/assets/studio/cocina-pasillo.webp.asset.json";
 import regadera from "@/assets/studio/regadera.webp.asset.json";
-import sanitario from "@/assets/studio/sanitario.webp.asset.json";
 import pasilloTerraza from "@/assets/studio/pasillo-terraza.webp.asset.json";
 import terrazaDescanso from "@/assets/studio/terraza-descanso.webp.asset.json";
 import terrazaJardin from "@/assets/studio/terraza-jardin.webp.asset.json";
 import terrazaSillas from "@/assets/studio/terraza-sillas.webp.asset.json";
 import terrazaPanorama from "@/assets/studio/terraza-panorama.webp.asset.json";
-import habitacionSillon from "@/assets/studio/habitacion-sillon.png.asset.json";
 import terrazaPortada from "@/assets/studio/terraza-portada.png.asset.json";
 import habitacionEntrada from "@/assets/studio/habitacion-entrada.png.asset.json";
 import habitacionCama from "@/assets/studio/habitacion-cama.png.asset.json";
@@ -52,7 +51,9 @@ export const Route = createFileRoute("/")({
         content: "Un refugio bohemio amueblado con terraza en Puerto Vallarta.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: `https://jungle-studio-pv.lovable.app${terrazaPortada.url}` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `https://jungle-studio-pv.lovable.app${terrazaPortada.url}` },
     ],
   }),
   component: Index,
@@ -62,14 +63,12 @@ const photos = [
   { src: terrazaPortada.url, alt: "Terraza techada entre plantas con área de descanso", shape: "wide" },
   { src: habitacionCama.url, alt: "Habitación amueblada con cama y espejo entre plantas", shape: "wide" },
   { src: terrazaSillas.url, alt: "Terraza con sillas artesanales de colores y vista a la montaña", shape: "wide" },
-  { src: cocinaBarra.url, alt: "Cocina equipada con barra, refrigerador y ventilador", shape: "tall" },
-  { src: regadera.url, alt: "Regadera amplia con calentador instantáneo", shape: "tall" },
+  { src: cocinaBarra.url, alt: "Cocina equipada con barra, frigobar y ventilador", shape: "tall" },
+  { src: regadera.url, alt: "Regadera amplia con calentador eléctrico instantáneo", shape: "tall" },
   { src: terrazaDescanso.url, alt: "Área de lectura y descanso rodeada de plantas", shape: "tall" },
   { src: habitacionEntrada.url, alt: "Habitación luminosa con cama, mesa y vegetación", shape: "tall" },
   { src: cocinaEquipada.url, alt: "Cocina equipada con fregadero y parrilla", shape: "tall" },
   { src: terrazaPanorama.url, alt: "Terraza con sillas de colores y vista verde", shape: "tall" },
-  { src: sanitario.url, alt: "Espacio privado de sanitario y lavamanos", shape: "tall" },
-  { src: habitacionSillon.url, alt: "Habitación con cama, espejo y sillón de descanso", shape: "tall" },
   { src: cocinaFrontal.url, alt: "Vista frontal de cocina con barra", shape: "tall" },
   { src: cocinaAngulo.url, alt: "Cocina con parrilla y amplias superficies", shape: "wide" },
   { src: pasilloTerraza.url, alt: "Acceso a la terraza por pasillo cubierto", shape: "tall" },
@@ -78,16 +77,17 @@ const photos = [
 ];
 
 const amenities = [
-  { icon: Droplets, title: "Agua incluida", text: "Sin cargos adicionales" },
+  { icon: Droplets, title: "Todos los servicios incluidos", text: "Agua, gas e internet (excepto electricidad)" },
   { icon: Wifi, title: "Internet de alta velocidad", text: "Ideal para trabajar a distancia" },
   { icon: Flower2, title: "Áreas comunes", text: "Mantenimiento incluido" },
   { icon: AirVent, title: "Aire acondicionado", text: "Además de ventilador de techo" },
-  { icon: Refrigerator, title: "Cocina equipada", text: "Parrilla, refrigerador y servicio" },
+  { icon: Refrigerator, title: "Cocina equipada", text: "Parrilla, frigobar y servicio" },
   { icon: Trees, title: "Terraza privada", text: "Tu rincón verde al aire libre" },
-  { icon: PawPrint, title: "Mascotas", text: "Acepto 1 mascota (sujeto a criterio y depósito adicional)" },
+  { icon: PawPrint, title: "Pet friendly", text: "Se acepta 1 mascota (perro o gato), sujeto a criterio y depósito adicional. Su dueño se hace 100% responsable de su limpieza y cuidado en todas las áreas." },
+  { icon: Camera, title: "Cámara de seguridad", text: "En tu entrada, con acceso solo para ti" },
 ];
 
-const whatsappLink = "https://wa.me/523222128950?text=Hola,%20estoy%20interesado%20en%20el%20estudio%20en%20El%20Pitillal";
+const whatsappLink = "https://wa.me/523222128950?text=Hola,%20me%20interesa%20el%20estudio%20en%20El%20Pitillal";
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -149,7 +149,7 @@ function Index() {
             <MapPin className="size-4" /> El Pitillal · Puerto Vallarta
           </div>
           <h1 className="max-w-4xl font-display text-5xl leading-[0.98] sm:text-6xl lg:text-8xl">
-            Tu Estudio Bohemio con <em className="font-normal text-hero-accent">Terraza Privada</em> en El Pitillal
+            Tu estudio bohemio con <em className="font-normal text-hero-accent">terraza privada</em> en El Pitillal
           </h1>
           <div className="mt-7 flex max-w-3xl flex-col items-start gap-7 border-t border-hero-line pt-6 sm:flex-row sm:items-end sm:justify-between">
             <p className="max-w-xl text-base leading-relaxed text-hero-muted sm:text-lg">Un espacio tranquilo, con mucha luz natural y áreas verdes, a minutos del centro de Puerto Vallarta.</p>
@@ -174,9 +174,9 @@ function Index() {
             </div>
             <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2">
               {[
-                [BedDouble, "Descanso", "Cama, clóset, aire acondicionado y ventilador de techo."],
-                [Refrigerator, "Cocina", "Parrilla, refrigerador y servicio completo para cuatro personas."],
-                [Droplets, "Baño dividido", "WC y lavamanos separados de la regadera con calentador instantáneo."],
+                [BedDouble, "Descanso", "Cama matrimonial, clóset, aire acondicionado y ventilador de techo."],
+                [Refrigerator, "Cocina", "Parrilla, frigobar y servicio completo para cuatro personas."],
+                [Droplets, "Baño dividido", "WC y lavamanos separados de la regadera con calentador eléctrico instantáneo."],
                 [Trees, "Vida exterior", "Terraza techada con áreas verdes y espacios para leer o descansar."],
               ].map(([Icon, title, text]) => {
                 const FeatureIcon = Icon as typeof BedDouble;
@@ -219,13 +219,13 @@ function Index() {
           <div className="grid overflow-hidden rounded-md border border-border bg-background lg:grid-cols-[0.8fr_1.2fr]">
             <div className="flex flex-col justify-between bg-secondary p-8 sm:p-12">
               <div><p className="eyebrow">Renta mensual</p><p className="mt-5 font-display text-6xl text-primary sm:text-7xl">$7,000</p><p className="mt-2 text-sm text-muted-foreground">pesos mexicanos al mes</p></div>
-              <div className="mt-12 border-t border-border pt-6"><p className="text-sm font-semibold">Incluye en tu renta</p><p className="mt-2 text-sm leading-6 text-muted-foreground">Agua, internet de alta velocidad y mantenimiento de áreas comunes.</p></div>
+              <div className="mt-12 border-t border-border pt-6"><p className="text-sm font-semibold">Todos los servicios incluidos (excepto electricidad)</p><ul className="mt-2 list-disc pl-4 text-sm leading-6 text-muted-foreground"><li>Agua</li><li>Gas</li><li>Internet de alta velocidad</li><li>Mantenimiento de áreas comunes</li></ul></div>
             </div>
             <div className="p-8 sm:p-12">
               <p className="eyebrow">Requisitos de arrendamiento</p>
               <h2 className="mt-4 font-display text-3xl sm:text-4xl">Claro desde el principio.</h2>
               <ul className="mt-8 grid gap-5">
-                {["2 meses de depósito en garantía, por tratarse de un espacio amueblado.", "1 mes de renta adelantada.", "Comprobante de ingresos.", "Referencias personales o laborales."].map((item) => <li key={item} className="flex gap-4 border-b border-border pb-5 text-sm leading-6"><span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground"><Check className="size-3.5" /></span>{item}</li>)}
+                 {["2 meses de depósito en garantía, por tratarse de un espacio amueblado.", "1 mes de renta adelantada.", "Comprobante de ingresos.", "Referencias personales o laborales.", "Máximo 2 personas.", "Contrato mínimo de 6 meses."].map((item) => <li key={item} className="flex gap-4 border-b border-border pb-5 text-sm leading-6"><span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground"><Check className="size-3.5" /></span>{item}</li>)}
               </ul>
               <div className="mt-7 flex gap-3 rounded-md bg-muted p-4 text-xs leading-5 text-muted-foreground"><ShieldCheck className="size-5 shrink-0 text-primary" />La dirección exacta se comparte únicamente al confirmar una visita.</div>
             </div>
