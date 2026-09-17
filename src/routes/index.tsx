@@ -149,7 +149,7 @@ function Index() {
             <MapPin className="size-4" /> El Pitillal · Puerto Vallarta
           </div>
           <h1 className="max-w-4xl font-display text-5xl leading-[0.98] sm:text-6xl lg:text-8xl">
-            Tu Estudio Bohemio con <em className="font-normal text-hero-accent">Terraza Privada</em> en El Pitillal
+            Tu estudio bohemio con <em className="font-normal text-hero-accent">terraza privada</em> en El Pitillal
           </h1>
           <div className="mt-7 flex max-w-3xl flex-col items-start gap-7 border-t border-hero-line pt-6 sm:flex-row sm:items-end sm:justify-between">
             <p className="max-w-xl text-base leading-relaxed text-hero-muted sm:text-lg">Un espacio tranquilo, con mucha luz natural y áreas verdes, a minutos del centro de Puerto Vallarta.</p>
@@ -219,13 +219,13 @@ function Index() {
           <div className="grid overflow-hidden rounded-md border border-border bg-background lg:grid-cols-[0.8fr_1.2fr]">
             <div className="flex flex-col justify-between bg-secondary p-8 sm:p-12">
               <div><p className="eyebrow">Renta mensual</p><p className="mt-5 font-display text-6xl text-primary sm:text-7xl">$7,000</p><p className="mt-2 text-sm text-muted-foreground">pesos mexicanos al mes</p></div>
-              <div className="mt-12 border-t border-border pt-6"><p className="text-sm font-semibold">Incluye en tu renta</p><p className="mt-2 text-sm leading-6 text-muted-foreground">Agua, internet de alta velocidad y mantenimiento de áreas comunes.</p></div>
+              <div className="mt-12 border-t border-border pt-6"><p className="text-sm font-semibold">Todos los servicios incluidos (excepto electricidad)</p><ul className="mt-2 list-disc pl-4 text-sm leading-6 text-muted-foreground"><li>Agua</li><li>Gas</li><li>Internet de alta velocidad</li><li>Mantenimiento de áreas comunes</li></ul></div>
             </div>
             <div className="p-8 sm:p-12">
               <p className="eyebrow">Requisitos de arrendamiento</p>
               <h2 className="mt-4 font-display text-3xl sm:text-4xl">Claro desde el principio.</h2>
               <ul className="mt-8 grid gap-5">
-                {["2 meses de depósito en garantía, por tratarse de un espacio amueblado.", "1 mes de renta adelantada.", "Comprobante de ingresos.", "Referencias personales o laborales."].map((item) => <li key={item} className="flex gap-4 border-b border-border pb-5 text-sm leading-6"><span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground"><Check className="size-3.5" /></span>{item}</li>)}
+                 {["2 meses de depósito en garantía, por tratarse de un espacio amueblado.", "1 mes de renta adelantada.", "Comprobante de ingresos.", "Referencias personales o laborales.", "Máximo 2 personas.", "Contrato mínimo de 6 meses."].map((item) => <li key={item} className="flex gap-4 border-b border-border pb-5 text-sm leading-6"><span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground"><Check className="size-3.5" /></span>{item}</li>)}
               </ul>
               <div className="mt-7 flex gap-3 rounded-md bg-muted p-4 text-xs leading-5 text-muted-foreground"><ShieldCheck className="size-5 shrink-0 text-primary" />La dirección exacta se comparte únicamente al confirmar una visita.</div>
             </div>
