@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   AirVent,
   BedDouble,
+  Camera,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -23,13 +24,11 @@ import { useEffect, useState } from "react";
 import cocinaAngulo from "@/assets/studio/cocina-angulo.webp.asset.json";
 import cocinaPasillo from "@/assets/studio/cocina-pasillo.webp.asset.json";
 import regadera from "@/assets/studio/regadera.webp.asset.json";
-import sanitario from "@/assets/studio/sanitario.webp.asset.json";
 import pasilloTerraza from "@/assets/studio/pasillo-terraza.webp.asset.json";
 import terrazaDescanso from "@/assets/studio/terraza-descanso.webp.asset.json";
 import terrazaJardin from "@/assets/studio/terraza-jardin.webp.asset.json";
 import terrazaSillas from "@/assets/studio/terraza-sillas.webp.asset.json";
 import terrazaPanorama from "@/assets/studio/terraza-panorama.webp.asset.json";
-import habitacionSillon from "@/assets/studio/habitacion-sillon.png.asset.json";
 import terrazaPortada from "@/assets/studio/terraza-portada.png.asset.json";
 import habitacionEntrada from "@/assets/studio/habitacion-entrada.png.asset.json";
 import habitacionCama from "@/assets/studio/habitacion-cama.png.asset.json";
@@ -52,7 +51,9 @@ export const Route = createFileRoute("/")({
         content: "Un refugio bohemio amueblado con terraza en Puerto Vallarta.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: `https://jungle-studio-pv.lovable.app${terrazaPortada.url}` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `https://jungle-studio-pv.lovable.app${terrazaPortada.url}` },
     ],
   }),
   component: Index,
@@ -62,14 +63,12 @@ const photos = [
   { src: terrazaPortada.url, alt: "Terraza techada entre plantas con área de descanso", shape: "wide" },
   { src: habitacionCama.url, alt: "Habitación amueblada con cama y espejo entre plantas", shape: "wide" },
   { src: terrazaSillas.url, alt: "Terraza con sillas artesanales de colores y vista a la montaña", shape: "wide" },
-  { src: cocinaBarra.url, alt: "Cocina equipada con barra, refrigerador y ventilador", shape: "tall" },
-  { src: regadera.url, alt: "Regadera amplia con calentador instantáneo", shape: "tall" },
+  { src: cocinaBarra.url, alt: "Cocina equipada con barra, frigobar y ventilador", shape: "tall" },
+  { src: regadera.url, alt: "Regadera amplia con calentador eléctrico instantáneo", shape: "tall" },
   { src: terrazaDescanso.url, alt: "Área de lectura y descanso rodeada de plantas", shape: "tall" },
   { src: habitacionEntrada.url, alt: "Habitación luminosa con cama, mesa y vegetación", shape: "tall" },
   { src: cocinaEquipada.url, alt: "Cocina equipada con fregadero y parrilla", shape: "tall" },
   { src: terrazaPanorama.url, alt: "Terraza con sillas de colores y vista verde", shape: "tall" },
-  { src: sanitario.url, alt: "Espacio privado de sanitario y lavamanos", shape: "tall" },
-  { src: habitacionSillon.url, alt: "Habitación con cama, espejo y sillón de descanso", shape: "tall" },
   { src: cocinaFrontal.url, alt: "Vista frontal de cocina con barra", shape: "tall" },
   { src: cocinaAngulo.url, alt: "Cocina con parrilla y amplias superficies", shape: "wide" },
   { src: pasilloTerraza.url, alt: "Acceso a la terraza por pasillo cubierto", shape: "tall" },
@@ -78,16 +77,17 @@ const photos = [
 ];
 
 const amenities = [
-  { icon: Droplets, title: "Agua incluida", text: "Sin cargos adicionales" },
+  { icon: Droplets, title: "Todos los servicios incluidos", text: "Agua, gas e internet (excepto electricidad)" },
   { icon: Wifi, title: "Internet de alta velocidad", text: "Ideal para trabajar a distancia" },
   { icon: Flower2, title: "Áreas comunes", text: "Mantenimiento incluido" },
   { icon: AirVent, title: "Aire acondicionado", text: "Además de ventilador de techo" },
-  { icon: Refrigerator, title: "Cocina equipada", text: "Parrilla, refrigerador y servicio" },
+  { icon: Refrigerator, title: "Cocina equipada", text: "Parrilla, frigobar y servicio" },
   { icon: Trees, title: "Terraza privada", text: "Tu rincón verde al aire libre" },
-  { icon: PawPrint, title: "Mascotas", text: "Acepto 1 mascota (sujeto a criterio y depósito adicional)" },
+  { icon: PawPrint, title: "Pet friendly", text: "Se acepta 1 mascota (perro o gato), sujeto a criterio y depósito adicional. Su dueño se hace 100% responsable de su limpieza y cuidado en todas las áreas." },
+  { icon: Camera, title: "Cámara de seguridad", text: "En tu entrada, con acceso solo para ti" },
 ];
 
-const whatsappLink = "https://wa.me/523222128950?text=Hola,%20estoy%20interesado%20en%20el%20estudio%20en%20El%20Pitillal";
+const whatsappLink = "https://wa.me/523222128950?text=Hola,%20me%20interesa%20el%20estudio%20en%20El%20Pitillal";
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
